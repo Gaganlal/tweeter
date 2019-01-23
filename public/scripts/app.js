@@ -17,15 +17,32 @@ const tweetData = {
 }
 
 function createTweetElement(tweet) {
-    var $tweet =  $('<article>').addClass("tweet")
 
 
-    var $bodyText = $('<p>').text(tweet.content.text)
 
-    $tweet.append($bodyText)
+    return `<article>
+          <header> <img class ="img" src="https://c.ndtvimg.com/2018-10/15p50r1g_cristiano-ronaldo-afp-10-18_625x300_03_October_18.jpg?output-quality=70&output-format=webp">
+           <div class="name"> ${tweet.user.name} </div>   <div class ="short">  cr7 </div>
+
+          </header>
+          <div class="lorem">${tweet.content.text}</div>
 
 
-    return $tweet
+        <footer> 10 Days ago
+          <div class="emoji">
+          <a href="#"> <i class="fas fa-flag">  </i> </a>
+
+          <a href="#"> <i class="fas fa-retweet"> </i> </a>
+
+          <a href="#"> <i class="fas fa-heart"> </i> </a>
+
+
+
+        </footer>
+
+
+
+      </article>`
 
 }
 
