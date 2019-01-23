@@ -108,11 +108,40 @@ data.forEach(function (tweet) {
 
 renderTweets(data)
 
+$( "form" ).on("submit", function( event ) {
+  event.preventDefault();                                 // function to prevent reload. deactivating the FORM SUBMIT
 
+var form = $(this)
+console.log(form.serialize())
+$.ajax({
+        url: '/tweets',
+        type: 'POST',                                       // making a ajax request similar to action="/tweets"
+        data:  form.serialize(),                                      //method = POST
+        success: function (response) {                  // so sending tweets to server
+            alert(response);
+        },
+        error: function () {
+            alert("error");
+        }
+    });
 
 
 });
 
+function loadTweets() {
+  $.ajax("/tweets", {
+    method: "GET",
+    dataType: 'json'                                          //fetching data from the server
+  })
+  .then(function (profile) {
+    renderTweets(profile)
+
+  })
+}
+
+loadTweets()
+
+})
 
 
 
