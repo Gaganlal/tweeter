@@ -1,0 +1,52 @@
+
+
+
+body main.container {
+    margin-top: 80px;
+        padding: 2em;
+        padding-top: 4em;
+}
+
+
+body main section.new-tweet {
+       border: 1px solid black;
+    border-radius: 10px;
+    background-color: lightgray;
+}
+
+
+
+body main h2 {
+  margin: 2%;
+  border-bottom: solid;
+}
+
+
+
+
+body main form textarea.text {
+    margin: 2% 2% 0 2%;
+    width: 96%;
+    padding-bottom: 2%;
+}
+
+
+
+
+
+
+body main form input.tweet {
+    margin-left: 2%;
+    margin-bottom: 4%;
+    margin-top: 0;
+}
+
+
+
+
+
+body main form span.counter {
+    padding-left: 72%;
+}
+
+

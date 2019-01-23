@@ -2,7 +2,7 @@
 
 // Basic express setup:
 
-const PORT          = 8080;
+const PORT          = 8081;
 const express       = require("express");
 const bodyParser    = require("body-parser");
 const app           = express();
@@ -32,3 +32,7 @@ app.use("/tweets", tweetsRoutes);
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
 });
+
+app.post("/tweets", (req,res) => {
+  res.redirect("/dfd")
+})

@@ -15,10 +15,91 @@ html {
  */
 
 body {
+  font-family: 'Roboto Condensed', sans-serif;
   margin: 0;
   color: #244751;
   background-color: #eee;
 }
+
+main {
+ background-color: white;
+ width: 450px;
+ margin: 80px auto;
+
+}
+
+.warning {
+  color: red;
+}
+
+section.tweet-container {
+    margin-top: 1em;
+    background-color: #EEE;
+    padding-bottom: 3em;
+}
+
+article {
+    border: 1px solid black;
+    border-radius: 10px;
+    margin-top: 2.5%;
+    overflow: hidden;
+}
+
+article header  {
+    padding: 0.5;
+    background-color: #EEE ;
+    position: relative;
+}
+
+article header .name{
+
+    display: inline-block;
+    vertical-align: top
+
+}
+
+.img {
+      width: 80px;
+    height: 80px;
+    padding: 1%;
+}
+
+article header .short {
+
+    display: inline-block;
+    position: absolute;
+    right: 5px;
+
+}
+
+
+.lorem {
+  padding: 1em ;
+}
+
+footer {
+      padding-bottom: 2%;
+    padding-left: 3%;
+    border-top-style: solid;
+    border-width: 1px;
+    border-color: lightgray;}
+
+article p {
+  padding: 2em;
+
+}
+
+article:hover a{
+  visibility: visible;,
+  color: #00a087;
+
+}
+
+article a {
+  visibility: hidden;
+
+}
+
 
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
