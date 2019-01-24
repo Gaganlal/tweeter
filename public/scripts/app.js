@@ -1,3 +1,11 @@
+
+
+function escape(str) {
+  var div = document.createElement('div');
+  div.appendChild(document.createTextNode(str));        //this adds the esc function with stops users from using js in the tweet
+  return div.innerHTML;                                           //and manipulating (hacking) ur page
+}
+
 $(document).ready(function() {
 
   const tweetData = {
@@ -25,7 +33,7 @@ $(document).ready(function() {
     <div class="name"> ${tweet.user.name} </div>   <div class ="short">  cr7 </div>
 
     </header>
-    <div class="lorem">${tweet.content.text}</div>
+    <div class="lorem">${escape(tweet.content.text)}</div>
 
 
     <footer> 10 Days ago
@@ -44,8 +52,8 @@ $(document).ready(function() {
 
     </article>`
 
-  }
-
+  }                   // here if u look at the return, escape is being added to the tweete.content.text... t
+                                //this means that the tweet itself can escape any js, so no hacking.
   createTweetElement(tweetData);
 
   const data = [
