@@ -154,8 +154,8 @@ $(document).ready(function() {
         method: "GET",
         dataType: 'json' //fetching data from the server
       })
-      .then(function(profile) {
-        renderTweets(profile)
+      .then(function(tweets) {
+        renderTweets(tweets)
 
       })
   }
