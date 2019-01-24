@@ -157,11 +157,12 @@ $(document).ready(function() {
 
   $("#nav-bar button").click(function() {
     console.log("running?")
-    $(".new-tweet").toggle("slow")
+    $(".new-tweet").toggle("slow", function () {                //added the focus
+      $("textarea.text").focus();
 
-  })
-
-})
+  });
+});
+});
 
 
 
