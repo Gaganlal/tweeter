@@ -1,9 +1,7 @@
-
-
 function escape(str) {
   var div = document.createElement('div');
-  div.appendChild(document.createTextNode(str));        //this adds the esc function with stops users from using js in the tweet
-  return div.innerHTML;                                           //and manipulating (hacking) ur page
+  div.appendChild(document.createTextNode(str)); //this adds the esc function with stops users from using js in the tweet
+  return div.innerHTML; //and manipulating (hacking) ur page
 }
 
 $(document).ready(function() {
@@ -12,9 +10,9 @@ $(document).ready(function() {
     "user": {
       "name": "Newton",
       "avatars": {
-        "small":   "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_50.png",
+        "small": "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_50.png",
         "regular": "https://vanillicon.com/788e533873e80d2002fa14e1412b4188.png",
-        "large":   "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_200.png"
+        "large": "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_200.png"
       },
       "handle": "@SirIsaac"
     },
@@ -52,18 +50,17 @@ $(document).ready(function() {
 
     </article>`
 
-  }                   // here if u look at the return, escape is being added to the tweete.content.text... t
-                                //this means that the tweet itself can escape any js, so no hacking.
+  } // here if u look at the return, escape is being added to the tweete.content.text... t
+  //this means that the tweet itself can escape any js, so no hacking.
   createTweetElement(tweetData);
 
-  const data = [
-  {
+  const data = [{
     "user": {
       "name": "Newton",
       "avatars": {
-        "small":   "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_50.png",
+        "small": "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_50.png",
         "regular": "https://vanillicon.com/788e533873e80d2002fa14e1412b4188.png",
-        "large":   "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_200.png"
+        "large": "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_200.png"
       },
       "handle": "@SirIsaac"
     },
@@ -71,97 +68,100 @@ $(document).ready(function() {
       "text": "If I have seen further it is by standing on the shoulders of giants"
     },
     "created_at": 1461116232227
-  },
-  {
+  }, {
     "user": {
       "name": "Descartes",
       "avatars": {
-        "small":   "https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc_50.png",
+        "small": "https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc_50.png",
         "regular": "https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc.png",
-        "large":   "https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc_200.png"
+        "large": "https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc_200.png"
       },
-      "handle": "@rd" },
-      "content": {
-        "text": "Je pense , donc je suis"
-      },
-      "created_at": 1461113959088
+      "handle": "@rd"
     },
-    {
-      "user": {
-        "name": "Johann von Goethe",
-        "avatars": {
-          "small":   "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1_50.png",
-          "regular": "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1.png",
-          "large":   "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1_200.png"
-        },
-        "handle": "@johann49"
+    "content": {
+      "text": "Je pense , donc je suis"
+    },
+    "created_at": 1461113959088
+  }, {
+    "user": {
+      "name": "Johann von Goethe",
+      "avatars": {
+        "small": "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1_50.png",
+        "regular": "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1.png",
+        "large": "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1_200.png"
       },
-      "content": {
-        "text": "Es ist nichts schrecklicher als eine tätige Unwissenheit."
-      },
-      "created_at": 1461113796368
-    }
-    ];
+      "handle": "@johann49"
+    },
+    "content": {
+      "text": "Es ist nichts schrecklicher als eine tätige Unwissenheit."
+    },
+    "created_at": 1461113796368
+  }];
 
 
 
+  function renderTweets(data) {
 
-    function renderTweets(data) {
+    data.forEach(function(tweet) {
+      $(".tweets-section").prepend(createTweetElement(tweet))
 
-      data.forEach(function (tweet) {
-        $(".tweets-section").prepend(createTweetElement(tweet))
+    })
+  }
 
-      })
-    }
+  renderTweets(data)
 
-    renderTweets(data)
+  $("form").on("submit", function(event) {
+    event.preventDefault(); // function to prevent reload. deactivating the FORM SUBMIT
 
-    $( "form" ).on("submit", function( event ) {
-  event.preventDefault();                                 // function to prevent reload. deactivating the FORM SUBMIT
+    var form = $(this)
 
-  var form = $(this)
+    let $textBox = $(".new-tweet textarea")
+    let tweetValue = $textBox.val()
+    let tweetLength = tweetValue.length
 
-  let $textBox = $(".new-tweet textarea")
-  let tweetValue = $textBox.val()
-  let tweetLength = tweetValue.length
+    if (tweetLength > 140) {
+      alert("Tweet exceeded Limit") // here adding a constraint on the text box,
+    } else if (!tweetValue) { //tweet has to meet these requirements to submit
+      alert("There is no tweet")
+    } else {
 
-  if(tweetLength > 140 ) {
-    alert("Tweet exceeded Limit")                         // here adding a constraint on the text box,
-  } else if (!tweetValue) {                                     //tweet has to meet these requirements to submit
-    alert("There is no tweet")
-  } else {
-
-  console.log(form.serialize())
-  $.ajax({
-    url: '/tweets',
-        type: 'POST',                                       // making a ajax request similar to action="/tweets"
-        data:  form.serialize(),                                      //method = POST
-        success: function (response) {                  // so sending tweets to server
-          loadTweets()                                      //loadtweets function adds data to browser
+      console.log(form.serialize())
+      $.ajax({
+        url: '/tweets',
+        type: 'POST', // making a ajax request similar to action="/tweets"
+        data: form.serialize(), //method = POST
+        success: function(response) { // so sending tweets to server
+          loadTweets() //loadtweets function adds data to browser
         },
-        error: function () {
+        error: function() {
           alert("error");
         }
       });
-};
+    };
 
 
-});
+  });
 
-    function loadTweets() {
-      $.ajax("/tweets", {
+  function loadTweets() {
+    $.ajax("/tweets", {
         method: "GET",
-    dataType: 'json'                                          //fetching data from the server
-  })
-      .then(function (profile) {
+        dataType: 'json' //fetching data from the server
+      })
+      .then(function(profile) {
         renderTweets(profile)
 
       })
-    }
+  }
 
-    loadTweets()
+  loadTweets()
+
+  $("#nav-bar button").click(function() {
+    console.log("running?")
+    $(".new-tweet").toggle("slow")
 
   })
+
+})
 
 
 
@@ -170,4 +170,3 @@ $(document).ready(function() {
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
-

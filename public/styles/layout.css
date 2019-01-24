@@ -100,6 +100,18 @@ article a {
 
 }
 
+#nav-bar button:hover {
+    visibility: visible;,
+  color: red;
+}
+
+#nav-bar button {
+    visibility: visible;
+}
+
+
+
+
 
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions

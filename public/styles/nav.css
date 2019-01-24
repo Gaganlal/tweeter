@@ -14,8 +14,10 @@ nav {
     padding-top: 0;
 }
 
-
-
+nav button {
+    float:right;
+    margin-top: 2%;
+}
 
 
  #nav-bar .logo {
