@@ -101,7 +101,7 @@ $(document).ready(function() {
     function renderTweets(data) {
 
       data.forEach(function (tweet) {
-        $(".tweets-section").append(createTweetElement(tweet))
+        $(".tweets-section").prepend(createTweetElement(tweet))
 
       })
     }
@@ -129,7 +129,7 @@ $(document).ready(function() {
         type: 'POST',                                       // making a ajax request similar to action="/tweets"
         data:  form.serialize(),                                      //method = POST
         success: function (response) {                  // so sending tweets to server
-          alert(response);
+          loadTweets()                                      //loadtweets function adds data to browser
         },
         error: function () {
           alert("error");
