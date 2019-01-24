@@ -120,11 +120,18 @@ $(document).ready(function() {
     let tweetLength = tweetValue.length
 
     if (tweetLength > 140) {
-      alert("Tweet exceeded Limit") // here adding a constraint on the text box,
-    } else if (!tweetValue) { //tweet has to meet these requirements to submit
-      alert("There is no tweet")
-    } else {
+      //adding an error in a section "error-message" instead of displaying an alert
+      //also added a slidedown option which makes the UI better
 
+      $("div.error-message").text("Tweet exceeded Limit")
+      $("div.error-message").slideDown("slow")
+
+    } else if (!tweetValue) {
+      //adding error instead of alert in the section error message
+    $("div.error-message").text("Forgot your tweet")
+    $("div.error-message").slideDown("slow")
+    } else {
+      $(".error-message").slideUp()
       console.log(form.serialize())
       $.ajax({
         url: '/tweets',
@@ -162,6 +169,8 @@ $(document).ready(function() {
 
   });
 });
+
+
 });
 
 
