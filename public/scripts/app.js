@@ -12,6 +12,7 @@ $(document).ready(function() {
 
 
     return `<article>
+
     <header> <img class ="img" src=${tweet.user.avatars.small}>
     <div class="name"> ${tweet.user.name} </div>   <div class ="short">  ${tweet.user.handle} </div>
 
@@ -19,16 +20,13 @@ $(document).ready(function() {
     <div class="lorem">${escape(tweet.content.text)}</div>
 
 
-    <footer> Created at ${tweet.created_at}
-    <div class="emoji">
-    <a href="#"> <i class="fas fa-flag">  </i> </a>
-
-    <a href="#"> <i class="fas fa-retweet"> </i> </a>
-
-    <a href="#"> <i class="fas fa-heart"> </i> </a>
-
-
-
+    <footer>
+    Created at ${moment(tweet.created_at).fromNow()}
+      <div class="emoji">
+        <a href="#"> <i class="fas fa-flag">  </i> </a>
+        <a href="#"> <i class="fas fa-retweet"> </i> </a>
+        <a href="#"> <i class="fas fa-heart"> </i> </a>
+      </div>
     </footer>
 
 
@@ -93,8 +91,6 @@ $(document).ready(function() {
     })
   }
 
-
-
   $("form").on("submit", function(event) {
     event.preventDefault(); // function to prevent reload. deactivating the FORM SUBMIT
 
@@ -107,32 +103,52 @@ $(document).ready(function() {
     if (tweetLength > 140) {
       //adding an error in a section "error-message" instead of displaying an alert
       //also added a slidedown option which makes the UI better
-
-      $("div.error-message").text("Tweet exceeded Limit")
-      $("div.error-message").slideDown("slow")
+      tweetExceeded()
 
     } else if (!tweetValue) {
       //adding error instead of alert in the section error message
-    $("div.error-message").text("Forgot your tweet")
-    $("div.error-message").slideDown("slow")
+      noTweets()
     } else {
+      submitForm()
+    };
+
+
+  });
+
+
+  function tweetExceeded() {
+      //adding an error in a section "error-message" instead of displaying an alert
+      //also added a slidedown option which makes the UI better
+      $("div.error-message").text("Tweet exceeded Limit")
+      $("div.error-message").slideDown("slow")
+
+  }
+
+  function noTweets() {
+      //adding error instead of alert in the section error message
+      $("div.error-message").text("Forgot your tweet")
+      $("div.error-message").slideDown("slow")
+
+  }
+
+  function submitForm() {
+      const $form = $("form")
       $(".error-message").slideUp()
-      console.log(form.serialize())
       $.ajax({
-        url: '/tweets',
-        type: 'POST', // making a ajax request similar to action="/tweets"
-        data: form.serialize(), //method = POST
+        url: '/tweets', // making a ajax request similar to action="/tweets"
+        type: 'POST', //method = POST
+        data: $form.serialize(),
         success: function(response) { // so sending tweets to server
           loadTweets() //loadtweets function adds data to browser
+           $(".new-tweet textarea").val("")
+        $("form span.counter").text("140")
         },
         error: function() {
           alert("error");
         }
       });
-    };
+  }
 
-
-  });
 
   function loadTweets() {
     $.ajax("/tweets", {

@@ -39,10 +39,14 @@ section.tweet-container {
 }
 
 article {
-    border: 1px solid black;
+    border: 1px solid lightgray;
     border-radius: 10px;
     margin-top: 2.5%;
     overflow: hidden;
+}
+
+article:hover {
+  border: solid black;
 }
 
 article header  {
@@ -54,14 +58,27 @@ article header  {
 article header .name{
 
     display: inline-block;
-    vertical-align: top
+    vertical-align: top;
+    font-size: larger;
+    padding: 1em;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 45%
 
 }
 
 .img {
-      width: 80px;
+    width: 80px;
     height: 80px;
     padding: 1%;
+    margin: 1.5% 1%;
+    opacity: 0.6;
+}
+
+article:hover .img {
+  opacity: 1;
 }
 
 article header .short {
@@ -69,12 +86,14 @@ article header .short {
     display: inline-block;
     position: absolute;
     right: 5px;
+    padding: 5%;
 
 }
 
 
 .lorem {
   padding: 1em ;
+  word-wrap: break-word;
 }
 
 .created{
@@ -82,20 +101,20 @@ article header .short {
 }
 
 footer {
-    padding: 1%;
+
     border-top-style: solid;
     border-width: 1px;
     border-color: lightgray;}
 
-article p {
-  padding: 2em;
-
-}
 
 article:hover a{
   visibility: visible;,
   color: #00a087;
 
+}
+
+article a:visited {
+  color: #00a087;
 }
 
 article a {
