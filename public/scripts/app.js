@@ -6,35 +6,20 @@ function escape(str) {
 
 $(document).ready(function() {
 
-  const tweetData = {
-    "user": {
-      "name": "Newton",
-      "avatars": {
-        "small": "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_50.png",
-        "regular": "https://vanillicon.com/788e533873e80d2002fa14e1412b4188.png",
-        "large": "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_200.png"
-      },
-      "handle": "@SirIsaac"
-    },
-    "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-    "created_at": 1461116232227
-  }
 
   function createTweetElement(tweet) {
 
 
 
     return `<article>
-    <header> <img class ="img" src="https://c.ndtvimg.com/2018-10/15p50r1g_cristiano-ronaldo-afp-10-18_625x300_03_October_18.jpg?output-quality=70&output-format=webp">
-    <div class="name"> ${tweet.user.name} </div>   <div class ="short">  cr7 </div>
+    <header> <img class ="img" src=${tweet.user.avatars.small}>
+    <div class="name"> ${tweet.user.name} </div>   <div class ="short">  ${tweet.user.handle} </div>
 
     </header>
     <div class="lorem">${escape(tweet.content.text)}</div>
 
 
-    <footer> 10 Days ago
+    <footer> Created at ${tweet.created_at}
     <div class="emoji">
     <a href="#"> <i class="fas fa-flag">  </i> </a>
 
@@ -52,7 +37,7 @@ $(document).ready(function() {
 
   } // here if u look at the return, escape is being added to the tweete.content.text... t
   //this means that the tweet itself can escape any js, so no hacking.
-  createTweetElement(tweetData);
+
 
   const data = [{
     "user": {
@@ -108,7 +93,7 @@ $(document).ready(function() {
     })
   }
 
-  renderTweets(data)
+
 
   $("form").on("submit", function(event) {
     event.preventDefault(); // function to prevent reload. deactivating the FORM SUBMIT

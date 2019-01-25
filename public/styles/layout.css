@@ -77,9 +77,12 @@ article header .short {
   padding: 1em ;
 }
 
+.created{
+  float:left;
+}
+
 footer {
-      padding-bottom: 2%;
-    padding-left: 3%;
+    padding: 1%;
     border-top-style: solid;
     border-width: 1px;
     border-color: lightgray;}
@@ -97,17 +100,23 @@ article:hover a{
 
 article a {
   visibility: hidden;
+  float: right;
+  padding-right: 0.4em;
+  padding-bottom: 0.5em
 
+}
+#nav-bar button {
+  color: #00a087;
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: #e0f5f1;
+  padding: 1em;
 }
 
 #nav-bar button:hover {
-    visibility: visible;,
-  color: red;
+  background-color: white
 }
 
-#nav-bar button {
-    visibility: visible;
-}
 
 
 div.error-message {
