@@ -8,7 +8,7 @@ $(document).ready(function() {
     $("span.counter").text(140 - tweetLength);
 
     if (tweetLength > 140) {
-      $("span.counter").addClass("warning");                        // Can do: .toggleClass() but be cautious
+      $("span.counter").addClass("warning"); // Can do: .toggleClass() but be cautious
 
     } else {
       $("span.counter").removeClass("warning");
@@ -16,7 +16,7 @@ $(document).ready(function() {
 
   })
 
-  $(".new-tweet textarea").on('keyup', function () {
+  $(".new-tweet textarea").on('keyup', function() {
 
   })
 

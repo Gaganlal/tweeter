@@ -117,36 +117,36 @@ $(document).ready(function() {
 
 
   function tweetExceeded() {
-      //adding an error in a section "error-message" instead of displaying an alert
-      //also added a slidedown option which makes the UI better
-      $("div.error-message").text("Tweet exceeded Limit")
-      $("div.error-message").slideDown("slow")
+    //adding an error in a section "error-message" instead of displaying an alert
+    //also added a slidedown option which makes the UI better
+    $("div.error-message").text("Tweet exceeded Limit")
+    $("div.error-message").slideDown("slow")
 
   }
 
   function noTweets() {
-      //adding error instead of alert in the section error message
-      $("div.error-message").text("Forgot your tweet")
-      $("div.error-message").slideDown("slow")
+    //adding error instead of alert in the section error message
+    $("div.error-message").text("Forgot your tweet")
+    $("div.error-message").slideDown("slow")
 
   }
 
   function submitForm() {
-      const $form = $("form")
-      $(".error-message").slideUp()
-      $.ajax({
-        url: '/tweets', // making a ajax request similar to action="/tweets"
-        type: 'POST', //method = POST
-        data: $form.serialize(),
-        success: function(response) { // so sending tweets to server
-          loadTweets() //loadtweets function adds data to browser
-           $(".new-tweet textarea").val("")
+    const $form = $("form")
+    $(".error-message").slideUp()
+    $.ajax({
+      url: '/tweets', // making a ajax request similar to action="/tweets"
+      type: 'POST', //method = POST
+      data: $form.serialize(),
+      success: function(response) { // so sending tweets to server
+        loadTweets() //loadtweets function adds data to browser
+        $(".new-tweet textarea").val("")
         $("form span.counter").text("140")
-        },
-        error: function() {
-          alert("error");
-        }
-      });
+      },
+      error: function() {
+        alert("error");
+      }
+    });
   }
 
 
@@ -165,11 +165,11 @@ $(document).ready(function() {
 
   $("#nav-bar button").click(function() {
     console.log("running?")
-    $(".new-tweet").toggle("slow", function () {                //added the focus
+    $(".new-tweet").toggle("slow", function() { //added the focus
       $("textarea.text").focus();
 
+    });
   });
-});
 
 
 });
